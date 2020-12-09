@@ -1,5 +1,5 @@
 {% set name = "papermill_report" %}
-{% set version = "2.0.4" %}
+{% set version = "2.0.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 20e1a2bf2ac84701ec3a139041e5d3bcc6aeeef66b9abd58f622351879ef0d9a
+  sha256: 97780d215c940c74f9143f57039f87dda85b4b7dd39bd24507461e937aa44c22
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
