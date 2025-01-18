@@ -6,20 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 97780d215c940c74f9143f57039f87dda85b4b7dd39bd24507461e937aa44c22
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - jinja2
     - nbconvert
     - papermill >=2.2.0
@@ -31,6 +31,7 @@ test:
     - papermill_report
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - python -m papermill_report --help
